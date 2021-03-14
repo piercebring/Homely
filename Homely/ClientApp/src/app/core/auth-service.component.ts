@@ -23,6 +23,7 @@ export class AuthService {
       post_logout_redirect_uri: `${environment.clientRoot}signout-callback`,
 
     };
+    console.log(environment.clientRoot);
     this._userManager = new UserManager(stsSettings);
 
   }
