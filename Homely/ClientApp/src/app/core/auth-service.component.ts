@@ -39,7 +39,7 @@ export class AuthService {
         this._loginChangedSubject.next(userCurrent);
       }
       this._user = user;
-      console.log(user.scopes)
+      console.log(environment.clientRoot)
       return userCurrent;
     });
   }
