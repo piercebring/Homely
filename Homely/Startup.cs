@@ -23,6 +23,7 @@ namespace Homely
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			
 			services.AddControllersWithViews();
 
 			services.AddCors(options =>
@@ -31,14 +32,14 @@ namespace Homely
 				{
 					builder.AllowAnyHeader()
 					.AllowAnyMethod()
-					.SetIsOriginAllowed(origin => origin == "https://localhost:4200/")
+					.SetIsOriginAllowed(origin => origin == Configuration.GetSection("baseUrl").Value)
 					.AllowCredentials();
 				});
 			});
 			services.AddAuthentication("Bearer")
 			.AddJwtBearer("Bearer", options =>
 			{
-				options.Authority = "https://localhost:5001";
+				options.Authority = Configuration.GetSection("stsAuthority").Value;
 				//options.Audience = "homelyAPI";
 
 
