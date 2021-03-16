@@ -74,6 +74,7 @@ namespace Homely
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			app.UseForwardedHeaders();
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
@@ -94,10 +95,7 @@ namespace Homely
 
 			app.UseRouting();
 			app.UseAuthentication();
-			app.UseForwardedHeaders(new ForwardedHeadersOptions
-			{
-				ForwardedHeaders = ForwardedHeaders.XForwardedProto
-			});
+			
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
