@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -25,6 +26,12 @@ namespace Homely
 		{
 			
 			services.AddControllersWithViews();
+			services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
 
 			services.AddCors(options =>
 			{
@@ -87,6 +94,10 @@ namespace Homely
 
 			app.UseRouting();
 			app.UseAuthentication();
+			app.UseForwardedHeaders(new ForwardedHeadersOptions
+			{
+				ForwardedHeaders = ForwardedHeaders.XForwardedProto
+			});
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
