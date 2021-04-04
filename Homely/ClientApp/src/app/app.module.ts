@@ -15,6 +15,7 @@ import { SigninRedirectCallbackComponent } from "./signin-redirect-callback/sign
 import { SignoutRedirectCallbackComponent } from "./signout-redirect-callback/signout-redirect-callback.component";
 import { AuthInterceptorService } from "./core/auth-interceptor.service";
 import { UnauthorizedComponent } from "./unauthorized/unauthorized.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
