@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { User, UserManager } from 'oidc-client';
-import { Subject } from 'rxjs';
-import { CoreModule } from './core.module';
-import { environment } from '../../environments/environment';
-
+import { Injectable } from "@angular/core";
+import { User, UserManager } from "oidc-client";
+import { Subject } from "rxjs";
+import { CoreModule } from "./core.module";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class AuthService {
@@ -18,14 +17,12 @@ export class AuthService {
       authority: environment.stsAuthority,
       client_id: environment.clientId,
       redirect_uri: `${environment.clientRoot}signin-callback`,
-      scope: 'openid profile homelyAPI',
-      response_type: 'code',
+      scope: "openid profile homelyAPI",
+      response_type: "code",
       post_logout_redirect_uri: `${environment.clientRoot}signout-callback`,
-
     };
     console.log(environment.clientRoot);
     this._userManager = new UserManager(stsSettings);
-
   }
 
   login() {
@@ -33,19 +30,19 @@ export class AuthService {
   }
 
   isLoggedIn(): Promise<boolean> {
-    return this._userManager.getUser().then(user => {
+    return this._userManager.getUser().then((user) => {
       const userCurrent = !!user && !user.expired;
       if (this._user !== user) {
         this._loginChangedSubject.next(userCurrent);
       }
       this._user = user;
-      console.log(environment.clientRoot)
+      console.log(environment.clientRoot);
       return userCurrent;
     });
   }
 
   completeLogin() {
-    return this._userManager.signinRedirectCallback().then(user => {
+    return this._userManager.signinRedirectCallback().then((user) => {
       this._user = user;
       this._loginChangedSubject.next(!!user && !user.expired);
       return user;
@@ -62,15 +59,12 @@ export class AuthService {
   }
 
   getAccessToken() {
-    return this._userManager.getUser().then(user => {
+    return this._userManager.getUser().then((user) => {
       if (!!user && !user.expired) {
         return user.access_token;
-      }
-      else {
+      } else {
         return null;
       }
-    })
+    });
   }
-
 }
-
