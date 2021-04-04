@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  stsAuthority: 'https://localhost:5001/',
-  clientRoot:'https://localhost:4200/',
-  clientId: 'web-client',
-  apiRoot: 'https://localhost:4200/',
+  stsAuthority: "https://localhost:5001/",
+  clientRoot: "https://localhost:4200/",
+  clientId: "web-client",
+  apiRoot: "https://localhost:4200/",
 };
 
 /*

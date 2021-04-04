@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SigninRedirectCallbackComponent } from './signin-redirect-callback.component';
+import { SigninRedirectCallbackComponent } from "./signin-redirect-callback.component";
 
-describe('SigninRedirectCallbackComponent', () => {
+describe("SigninRedirectCallbackComponent", () => {
   let component: SigninRedirectCallbackComponent;
   let fixture: ComponentFixture<SigninRedirectCallbackComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninRedirectCallbackComponent ]
-    })
-    .compileComponents();
+      declarations: [SigninRedirectCallbackComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SigninRedirectCallbackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
